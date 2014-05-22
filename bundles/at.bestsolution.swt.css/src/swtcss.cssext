@@ -1,4 +1,534 @@
 package org.eclipse.swt.widgets {
+	/**
+	 * CSS supports a bunch of named constant colors. Named colors can be specified with just their unquoted name for example:<br />
+	 * <code>
+	 * .button {<br />
+     * &nbsp;&nbsp;&nbsp;&nbsp;-fx-background-color: red;<br />
+     * }
+	 * </code><br />
+	 * 
+	 * The named colors that are available in CSS are:
+	 * 
+	 * <table summary="property table" class="html4colortable">
+     * <tbody>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% aliceblue;"></span>
+     *     </td>
+     *     <td>aliceblue = #f0f8ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% antiquewhite;"></span>
+     *     </td>
+     *     <td>antiquewhite = #faebd7</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% aqua;"></span>
+     *     </td>
+     *     <td>aqua = #00ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% aquamarine;"></span>
+     *     </td>
+     *     <td>aquamarine = #7fffd4</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% azure;"></span>
+     *     </td>
+     *     <td>azure = #f0ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% beige;"></span>
+     *     </td>
+     *     <td>beige = #f5f5dc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% bisque;"></span>
+     *     </td>
+     *     <td>bisque = #ffe4c4</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% black;"></span>
+     *     </td>
+     *     <td>black = #000000</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% blanchedalmond;"></span>
+     *     </td>
+     *     <td>blanchedalmond = #ffebcd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% blue;"></span>
+     *     </td>
+     *     <td>blue = #0000ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% blueviolet;"></span>
+     *     </td>
+     *     <td>blueviolet = #8a2be2</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% brown;"></span>
+     *     </td>
+     *     <td>brown = #a52a2a</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% burlywood;"></span>
+     *     </td>
+     *     <td>burlywood = #deb887</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cadetblue;"></span>
+     *     </td>
+     *     <td>cadetblue = #5f9ea0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% chartreuse;"></span>
+     *     </td>
+     *     <td>chartreuse = #7fff00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% chocolate;"></span>
+     *     </td>
+     *     <td>chocolate = #d2691e</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% coral;"></span>
+     *     </td>
+     *     <td>coral = #ff7f50</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cornflowerblue;"></span>
+     *     </td>
+     *     <td>cornflowerblue = #6495ed</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cornsilk;"></span>
+     *     </td>
+     *     <td>cornsilk = #fff8dc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% crimson;"></span>
+     *     </td>
+     *     <td>crimson = #dc143c</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% cyan;"></span>
+     *     </td>
+     *     <td>cyan = #00ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkblue;"></span>
+     *     </td>
+     *     <td>darkblue = #00008b</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkcyan;"></span>
+     *     </td>
+     *     <td>darkcyan = #008b8b</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgoldenrod;"></span>
+     *     </td>
+     *     <td>darkgoldenrod = #b8860b</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgray;"></span>
+     *     </td>
+     *     <td>darkgray = #a9a9a9</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgreen;"></span>
+     *     </td>
+     *     <td>darkgreen = #006400</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkgrey;"></span>
+     *     </td>
+     *     <td>darkgrey = #a9a9a9</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkkhaki;"></span>
+     *     </td>
+     *     <td>darkkhaki = #bdb76b</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkmagenta;"></span>
+     *     </td>
+     *     <td>darkmagenta = #8b008b</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkolivegreen;"></span>
+     *     </td>
+     *     <td>darkolivegreen = #556b2f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkorange;"></span>
+     *     </td>
+     *     <td>darkorange = #ff8c00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkorchid;"></span>
+     *     </td>
+     *     <td>darkorchid = #9932cc</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkred;"></span>
+     *     </td>
+     *     <td>darkred = #8b0000</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darksalmon;"></span>
+     *     </td>
+     *     <td>darksalmon = #e9967a</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkseagreen;"></span>
+     *     </td>
+     *     <td>darkseagreen = #8fbc8f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkslateblue;"></span>
+     *     </td>
+     *     <td>darkslateblue = #483d8b</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkslategray;"></span>
+     *     </td>
+     *     <td>darkslategray = #2f4f4f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkslategrey;"></span>
+     *     </td>
+     *     <td>darkslategrey = #2f4f4f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkturquoise;"></span>
+     *     </td>
+     *     <td>darkturquoise = #00ced1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% darkviolet;"></span>
+     *     </td>
+     *     <td>darkviolet = #9400d3</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% deeppink;"></span>
+     *     </td>
+     *     <td>deeppink = #ff1493</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% deepskyblue;"></span>
+     *     </td>
+     *     <td>deepskyblue = #00bfff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% dimgray;"></span>
+     *     </td>
+     *     <td>dimgray = #696969</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% dimgrey;"></span>
+     *     </td>
+     *     <td>dimgrey = #696969</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% dodgerblue;"></span>
+     *     </td>
+     *     <td>dodgerblue = #1e90ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% firebrick;"></span>
+     *     </td>
+     *     <td>firebrick = #b22222</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% floralwhite;"></span>
+     *     </td>
+     *     <td>floralwhite = #fffaf0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% forestgreen;"></span>
+     *     </td>
+     *     <td>forestgreen = #228b22</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% fuchsia;"></span>
+     *     </td>
+     *     <td>fuchsia = #ff00ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% gainsboro;"></span>
+     *     </td>
+     *     <td>gainsboro = #dcdcdc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% ghostwhite;"></span>
+     *     </td>
+     *     <td>ghostwhite = #f8f8ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% gold;"></span>
+     *     </td>
+     *     <td>gold = #ffd700</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% goldenrod;"></span>
+     *     </td>
+     *     <td>goldenrod = #daa520</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% gray;"></span>
+     *     </td>
+     *     <td>gray = #808080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% green;"></span>
+     *     </td>
+     *     <td>green = #008000</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% greenyellow;"></span>
+     *     </td>
+     *     <td>greenyellow = #adff2f</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% grey;"></span>
+     *     </td>
+     *     <td>grey = #808080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% honeydew;"></span>
+     *     </td>
+     *     <td>honeydew = #f0fff0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% hotpink;"></span>
+     *     </td>
+     *     <td>hotpink = #ff69b4</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% indianred;"></span>
+     *     </td>
+     *     <td>indianred = #cd5c5c</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% indigo;"></span>
+     *     </td>
+     *     <td>indigo = #4b0082</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% ivory;"></span>
+     *     </td>
+     *     <td>ivory = #fffff0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% khaki;"></span>
+     *     </td>
+     *     <td>khaki = #f0e68c</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lavender;"></span>
+     *     </td>
+     *     <td>lavender = #e6e6fa</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lavenderblush;"></span>
+     *     </td>
+     *     <td>lavenderblush = #fff0f5</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lawngreen;"></span>
+     *     </td>
+     *     <td>lawngreen = #7cfc00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lemonchiffon;"></span>
+     *     </td>
+     *     <td>lemonchiffon = #fffacd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightblue;"></span>
+     *     </td>
+     *     <td>lightblue = #add8e6</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightcoral;"></span>
+     *     </td>
+     *     <td>lightcoral = #f08080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightcyan;"></span>
+     *     </td>
+     *     <td>lightcyan = #e0ffff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgoldenrodyellow;"></span>
+     *     </td>
+     *     <td>lightgoldenrodyellow = #fafad2</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgray;"></span>
+     *     </td>
+     *     <td>lightgray = #d3d3d3</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgreen;"></span>
+     *     </td>
+     *     <td>lightgreen = #90ee90</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightgrey;"></span>
+     *     </td>
+     *     <td>lightgrey = #d3d3d3</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightpink;"></span>
+     *     </td>
+     *     <td>lightpink = #ffb6c1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightsalmon;"></span>
+     *     </td>
+     *     <td>lightsalmon = #ffa07a</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightseagreen;"></span>
+     *     </td>
+     *     <td>lightseagreen = #20b2aa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightskyblue;"></span>
+     *     </td>
+     *     <td>lightskyblue = #87cefa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightslategray;"></span>
+     *     </td>
+     *     <td>lightslategray = #778899</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightslategrey;"></span>
+     *     </td>
+     *     <td>lightslategrey = #778899</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightsteelblue;"></span>
+     *     </td>
+     *     <td>lightsteelblue = #b0c4de</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lightyellow;"></span>
+     *     </td>
+     *     <td>lightyellow = #ffffe0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% lime;"></span>
+     *     </td>
+     *     <td>lime = #00ff00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% limegreen;"></span>
+     *     </td>
+     *     <td>limegreen = #32cd32</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% linen;"></span>
+     *     </td>
+     *     <td>linen = #faf0e6</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% magenta;"></span>
+     *     </td>
+     *     <td>magenta = #ff00ff</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% maroon;"></span>
+     *     </td>
+     *     <td>maroon = #800000</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumaquamarine;"></span>
+     *     </td>
+     *     <td>mediumaquamarine = #66cdaa</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumblue;"></span>
+     *     </td>
+     *     <td>mediumblue = #0000cd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumorchid;"></span>
+     *     </td>
+     *     <td>mediumorchid = #ba55d3</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumpurple;"></span>
+     *     </td>
+     *     <td>mediumpurple = #9370db</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumseagreen;"></span>
+     *     </td>
+     *     <td>mediumseagreen = #3cb371</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumslateblue;"></span>
+     *     </td>
+     *     <td>mediumslateblue = #7b68ee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumspringgreen;"></span>
+     *     </td>
+     *     <td>mediumspringgreen = #00fa9a</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumturquoise;"></span>
+     *     </td>
+     *     <td>mediumturquoise = #48d1cc</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mediumvioletred;"></span>
+     *     </td>
+     *     <td>mediumvioletred = #c71585</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% midnightblue;"></span>
+     *     </td>
+     *     <td>midnightblue = #191970</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mintcream;"></span>
+     *     </td>
+     *     <td>mintcream = #f5fffa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% mistyrose;"></span>
+     *     </td>
+     *     <td>mistyrose = #ffe4e1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% moccasin;"></span>
+     *     </td>
+     *     <td>moccasin = #ffe4b5</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% navajowhite;"></span>
+     *     </td>
+     *     <td>navajowhite = #ffdead</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% navy;"></span>
+     *     </td>
+     *     <td>navy = #000080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% oldlace;"></span>
+     *     </td>
+     *     <td>oldlace = #fdf5e6</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% olive;"></span>
+     *     </td>
+     *     <td>olive = #808000</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% olivedrab;"></span>
+     *     </td>
+     *     <td>olivedrab = #6b8e23</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% orange;"></span>
+     *     </td>
+     *     <td>orange = #ffa500</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% orangered;"></span>
+     *     </td>
+     *     <td>orangered = #ff4500</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% orchid;"></span>
+     *     </td>
+     *     <td>orchid = #da70d6</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% palegoldenrod;"></span>
+     *     </td>
+     *     <td>palegoldenrod = #eee8aa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% palegreen;"></span>
+     *     </td>
+     *     <td>palegreen = #98fb98</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% paleturquoise;"></span>
+     *     </td>
+     *     <td>paleturquoise = #afeeee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% palevioletred;"></span>
+     *     </td>
+     *     <td>palevioletred = #db7093</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% papayawhip;"></span>
+     *     </td>
+     *     <td>papayawhip = #ffefd5</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% peachpuff;"></span>
+     *     </td>
+     *     <td>peachpuff = #ffdab9</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% peru;"></span>
+     *     </td>
+     *     <td>peru = #cd853f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% pink;"></span>
+     *     </td>
+     *     <td>pink = #ffc0cb</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% plum;"></span>
+     *     </td>
+     *     <td>plum = #dda0dd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% powderblue;"></span>
+     *     </td>
+     *     <td>powderblue = #b0e0e6</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% purple;"></span>
+     *     </td>
+     *     <td>purple = #800080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% red;"></span>
+     *     </td>
+     *     <td>red = #ff0000</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% rosybrown;"></span>
+     *     </td>
+     *     <td>rosybrown = #bc8f8f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% royalblue;"></span>
+     *     </td>
+     *     <td>royalblue = #4169e1</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% saddlebrown;"></span>
+     *     </td>
+     *     <td>saddlebrown = #8b4513</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% salmon;"></span>
+     *     </td>
+     *     <td>salmon = #fa8072</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% sandybrown;"></span>
+     *     </td>
+     *     <td>sandybrown = #f4a460</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% seagreen;"></span>
+     *     </td>
+     *     <td>seagreen = #2e8b57</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% seashell;"></span>
+     *     </td>
+     *     <td>seashell = #fff5ee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% sienna;"></span>
+     *     </td>
+     *     <td>sienna = #a0522d</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% silver;"></span>
+     *     </td>
+     *     <td>silver = #c0c0c0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% skyblue;"></span>
+     *     </td>
+     *     <td>skyblue = #87ceeb</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% slateblue;"></span>
+     *     </td>
+     *     <td>slateblue = #6a5acd</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% slategray;"></span>
+     *     </td>
+     *     <td>slategray = #708090</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% slategrey;"></span>
+     *     </td>
+     *     <td>slategrey = #708090</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% snow;"></span>
+     *     </td>
+     *     <td>snow = #fffafa</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% springgreen;"></span>
+     *     </td>
+     *     <td>springgreen = #00ff7f</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% steelblue;"></span>
+     *     </td>
+     *     <td>steelblue = #4682b4</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% tan;"></span>
+     *     </td>
+     *     <td>tan = #d2b48c</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% teal;"></span>
+     *     </td>
+     *     <td>teal = #008080</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% thistle;"></span>
+     *     </td>
+     *     <td>thistle = #d8bfd8</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% tomato;"></span>
+     *     </td>
+     *     <td>tomato = #ff6347</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% turquoise;"></span>
+     *     </td>
+     *     <td>turquoise = #40e0d0</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% violet;"></span>
+     *     </td>
+     *     <td>violet = #ee82ee</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% wheat;"></span>
+     *     </td>
+     *     <td>wheat = #f5deb3</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% white;"></span>
+     *     </td>
+     *     <td>white = #ffffff</td>
+     *   </tr>
+     *   <tr>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% whitesmoke;"></span>
+     *     </td>
+     *     <td>whitesmoke = #f5f5f5</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% yellow;"></span>
+     *     </td>
+     *     <td>yellow = #ffff00</td>
+     *     <td><span style="display:block;width:16px;height:16px;border:2px solid black;background: none repeat scroll 0% 50% yellowgreen;"></span>
+     *     </td>
+     *     <td>yellowgreen = #9acd32</td>
+     *   </tr>
+     * </tbody>
+     * </table>
+	 */
 	named-color = [ aliceBlue 			| aqua 					| aquamarine 		| azure 			| 
 					beige	  			| bisque 				| black				| blanchedalmond	|
 					blue				| blueviolet			| brown				| burlywood			|
@@ -39,101 +569,358 @@ package org.eclipse.swt.widgets {
 					
 	];
 	
+	/**
+	 * The format of an RGB value in hexadecimal notation is a ‘#’ immediately followed by either three or six hexadecimal characters. The three-digit RGB notation (#rgb) is converted into six-digit form (#rrggbb) by replicating digits, not by adding zeros. For example, #fb0 expands to #ffbb00. This ensures that white (#ffffff) can be specified with the short notation (#fff) and removes any dependencies on the color depth of the display.
+	 */
 	hex-color = $#[0123456789ABCDEFabcdef]{6}$ | $#[0123456789ABCDEFabcdef]{3}$;
 	
+	/**
+	 * The format of an RGB value in the functional notation is ‘rgb(’ followed by a comma-separated list of three numerical values. The integer value 255 corresponds to F or FF in the hexadecimal notation: rgb(255,255,255) = #FFF. White space characters are allowed around the numerical values.
+	 */
 	rgb-color = rgb(@INT(0->255), @INT(0->255), @INT(0->255));
 	
-	prop-color = <named-color> | <hex-color> | <rgb-color> | inherit;
+	/**
+	 * Color definition 
+	 */
+	 color = <named-color> | <hex-color> | <rgb-color> | inherit;
 	
+	/**
+	 * No whitespace is allowed between the number and the percent symbol.
+	 * These are a percentage of some length, typically to the width or height of a node.
+	 */
 	percentage = @NUM ~ %;
 	
+	/**
+	 * &lt;address&gt; can be an absolute URI, for example:
+	 * <ul>
+	 * <li>url(http://example.com)</li>
+	 * <li>url('http://example.com')</li>
+	 * <li>url("http://example.com")</li>
+	 * </ul>
+	 * or it can be relative to the location of the CSS file.
+	 */
 	uri = @URL;
 	
 	string = @STRING;
 	
 	bool = true | false;
 	
-	color-fill = <prop-color> | [[linear|radial] gradient]? <prop-color> <prop-color>+ <percentage>+;
+	/**
+	 * Linear or radial gradient for example:
+	 * <table>
+	 * <tr><td><span style="display:block;width:16px;height:16px;border:2px solid black;background: linear-gradient(to right, white, black);"></span></td><td>gradient #FFF #000 100%</td></tr>
+	 * <tr><td><span style="display:block;width:16px;height:16px;border:2px solid black;background: linear-gradient(to bottom, white, black);"></span></td><td>gradient #FFF #000 100% false</td></tr>
+	 * <tr><td><span style="display:block;width:16px;height:16px;border:2px solid black;background: linear-gradient(to right, red, green 50%, blue 100% );"></span></td><td>gradient red green blue 50% 100%</td></tr>
+	 * </table>  
+	 */
+	gradient = [[linear|radial] gradient]? <color> <color>+ <percentage>+ <bool>?;
+	
+	/**
+	 * A solid color or a gradient 
+	 */
+	color-fill = <color> | <gradient>;
+	/**
+	 * Base class for all user interface objects
+	 */
 	Widget {
 		
 	}
+	/**
+	 * Base class for all windowed user interface classes 
+	 */
 	Control extends Widget {
+		/**
+		 * Background fill
+		 */
 		background <color-fill>;
+		/**
+		 * Background fill
+		 */
 		background-color <color-fill>;
+		/**
+		 * Background image
+		 */
 		background-image <uri>;
+		/**
+		 * Cursor shown when mouse is over the control e.g. <code>cursor: crosshair</code>
+		 */
 		cursor [ default | auto | crosshair | pointer | move | e-resize | ne-resize | nw-resize | n-resize | 
 				 se-resize | sw-resize | s-resize | w-resize | text | wait | help ];
+		/**
+		 * Hide or show the control
+		 */
 		visibility [ hidden | visible ];
-		color <prop-color>;
-//font
+		/**
+		 * The foreground color of the control used when displaying text e.g. <code>color: #FF0000</code>
+		 */
+		color <color>;
+		/**
+		 * The font used by the control when displaying text e.g. <code>font-family: "Terminal"</code>
+		 */
 		font-family <string>;
+		/**
+		 * The font size used by the control when displaying text e.g. <code>font-size: 12;</code>
+		 */
 		font-size @NUM;
+		/**
+		 * The font style used by the control when displaying text e.g. <code>font-style: italic;</code>
+		 */
 		font-style italic;
+		/**
+		 * The font weight used by the control when displaying text e.g. <code>font-weight: bold;</code>
+		 */
 		font-weight bold;
+		/**
+		 * The font used when displaying text e.g. <code>font: italic 12 bold "Terminal"</code>
+		 */
+		font <font-style> <font-size> <font-weight> <font-family>;
+		/**
+		 * Top margin used when the control is embedded in a GridLayout
+		 */
 		margin-top @NUM;
+		/**
+		 * Bottom margin used when the control is embedded in a GridLayout
+		 */
 		margin-bottom @NUM;
+		/**
+		 * Left margin used when the control is embedded in a GridLayout
+		 */
 		margin-left @NUM;
+		/**
+		 * Right margin used when the control is embedded in a GridLayout
+		 */
 		margin-right @NUM;
-		margin @NUM | @NUM @NUM @NUM @NUM;
+		/**
+		 * Margin used when the control is embedded in a GridLayout
+		 * <ul>
+		 * <li>1 value: top, right, bottom, left get the same value</li>
+		 * <li>2 values: 1st value is used for top &amp; bottom, 2nd value is used for left &amp; right</li>
+		 * <li>3 values: 1st value is used for top, 2nd value is used for right &amp; left, 3rd value is used for bottom</li>
+		 * <li>4 values: 1st value is used for top, 2nd value is used for right, 3rd value is used for bottom, 4th value is used for left</li>
+		 * </ul>
+		 */
+		margin [@NUM] | [@NUM @NUM] | [@NUM @NUM @NUM] | [<margin-top> <margin-right> <margin-bottom> <margin-left>];
 	}
+	/**
+	 * Represents a selectable user interface object
+	 * <ul>
+	 * <li>Push button</li>
+	 * <li>Checkbox</li>
+	 * <li>Radiobox</li>
+	 * <li>Arrow button</li>
+	 * </ul>
+	 */
 	Button extends Control {
+		/**
+		 * Transforms the text set on the control
+		 */
 		text-transform [capitalize | uppercase | lowercase | inherit ];
+		/**
+		 * Alignment of the text
+		 */
 		text-align [ left | center | right ];
+		/**
+		 * Alignment of the text, up &amp; down only apply when the button is created with SWT.ARROW
+		 */
 		swt-alignment [lead | trail | up | down ];
 	}
+	/**
+	 * Represents an non-selectable user interface object
+	 */
 	Label extends Control {
+		/**
+		 * Transforms the text set on the control
+		 */
 		text-transform [capitalize | uppercase | lowercase | inherit ];
+		/**
+		 * Alignment of the text
+		 */
 		text-align [ left | center | right ];
+		/**
+		 * Alignment of the text
+		 */
 		swt-alignment [ lead | trail ];
 	}
+	/**
+	 * Base class for all classes who represent controls that have standard scroll bars
+	 */
 	Scrollable extends Control {
 		
 	}
+	/**
+	 * Represents a control which is capable of containing other controls
+	 */
 	Composite extends Scrollable  {
+		/**
+		 * Background mode of the control
+		 * <ul>
+		 * <li>default: children will inherit the background if it is their default to inherit the background color</li>
+		 * <li>force: children are forced to inherit the background color</li>
+		 * <li>none: background is not inherited by the children</li>
+		 * </ul>
+		 */
 		swt-background-mode [ default | force | none ];
 	}
+	/**
+	 * Represents a notebook user interface methaphor
+	 */
 	CTabFolder extends Composite {
+		/**
+		 * The radius at the corner
+		 */
 		swt-corner-radius @NUM;
+		/**
+		 * URL to a class used as the renderer e.g. <code>swt-tab-renderer: url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering')</code>
+		 */
 		swt-tab-renderer @URL;
+		/**
+		 * Color of not selected tabs
+		 */
 		swt-unselected-tabs-color <color-fill>;
+		/**
+		 * Position of the tabs
+		 */
 		swt-tab-position [ bottom | top ];
-		swt-outer-keyline-color <prop-color>;
-		swt-inner-keyline-color <prop-color>;
+		/**
+		 * Color of the line drawn outside the control
+		 */
+		swt-outer-keyline-color <color>;
+		/**
+		 * Color of the line drawn inside the control
+		 */
+		swt-inner-keyline-color <color>;
+		/**
+		 * Tabs are not rendered fancy (depends on the renderer)
+		 */
 		swt-simple <bool>;
+		/**
+		 * Make the maximize icon visible
+		 */
 		swt-maximize-visible <bool>;
+		/**
+		 * Make the minimize icon visible
+		 */
 		swt-minimize-visible <bool>;
+		/**
+		 * Shown the mru
+		 */
 		swt-mru-visible <bool>;
+		/**
+		 * Set the maximize state
+		 */
 		swt-maximized <bool>;
+		/**
+		 * Set the minimize state
+		 */
 		swt-minimized <bool>;
+		/**
+		 * The height of the tabs
+		 */
 		swt-tab-height @NUM;
+		/**
+		 * Only one tab is shown at a time
+		 */
 		swt-single <bool>;
+		/**
+		 * <code>true</code> makes the close icon visible even on unselected tabs
+		 */
 		swt-unselected-close-visible <bool>;
+		/**
+		 * <code>true</code> makes the close icon visible even on unselected tabs
+		 */
 		swt-unselected-image-visible <bool>;
+		/**
+		 * Color used by the selected tab
+		 */
 		swt-selected-tabs-background <color-fill>;
+		/**
+		 * Enable showing of a drop shadow (depends on the renderer used)
+		 */
 		swt-shadow-visible <bool>;
 		swt-selected-tab-fill <color-fill>;
-		swt-tab-outline <prop-color>;
-		swt-shadow-color <prop-color>;
-		padding @NUM | @NUM @NUM @NUM @NUM;
+		swt-tab-outline <color>;
+		/**
+		 * Color used for the shadow
+		 */
+		swt-shadow-color <color>;
+		/**
+		 * The padding to apply to the content
+		 * <ul>
+		 * <li>1 value: top, right, bottom, left get the same value</li>
+		 * <li>4 values: 1st value is used for top, 2nd value is used for right, 3rd value is used for bottom, 4th value is used for left</li>
+		 * </ul>
+		 */
+		padding @NUM | <padding-top> <padding-right> <padding-bottom> <padding-left>;
+		/**
+		 * the value used for the left padding 
+		 */
 		padding-left @NUM;
+		/**
+		 * the value used for the right padding 
+		 */
 		padding-right @NUM;
+		/**
+		 * the value used for the top padding 
+		 */
 		padding-top @NUM;
+		/**
+		 * the value used for the bottom padding 
+		 */
 		padding-bottom @NUM;
 	}
+	/**
+	 * Base class for none windowed user interface objects
+	 */
 	Item extends Widget {
 		
 	}
+	/**
+	 * Represents a selectable user interface object that represents a page in a notebook widget
+	 */
 	CTabItem extends Item {
-		color <prop-color>
+		/**
+		 * The color for the text
+		 */
+		color <color>
+		/**
+		 * Transform used for the text
+		 */
 		text-transform [capitalize | uppercase | lowercase | inherit ];
+		/**
+		 * Background fill of the tab
+		 */
 		background <color-fill>;
+		/**
+		 * Background fill of the tab
+		 */
 		background-color <color-fill>;
-		background-image @URL
-		//font
+		/**
+		 * Background image used by the tab
+		 */
+		background-image @URL;
+		/**
+		 * The font used by the control when displaying text e.g. <code>font-family: "Terminal"</code>
+		 */
 		font-family <string>;
+		/**
+		 * The font size used by the control when displaying text e.g. <code>font-size: 12;</code>
+		 */
 		font-size @NUM;
+		/**
+		 * The font style used by the control when displaying text e.g. <code>font-style: italic;</code>
+		 */
 		font-style italic;
+		/**
+		 * The font weight used by the control when displaying text e.g. <code>font-weight: bold;</code>
+		 */
 		font-weight bold;
+		/**
+		 * The font used when displaying text e.g. <code>font: italic 12 bold "Terminal"</code>
+		 */
+		font <font-style> <font-size> <font-weight> <font-family>;
+		/**
+		 * <code>true</code> to make the item closeable
+		 */
 		swt-show-close <bool>;
 	}
 }
