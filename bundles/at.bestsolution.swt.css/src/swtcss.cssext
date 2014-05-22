@@ -1,0 +1,139 @@
+package org.eclipse.swt.widgets {
+	named-color = [ aliceBlue 			| aqua 					| aquamarine 		| azure 			| 
+					beige	  			| bisque 				| black				| blanchedalmond	|
+					blue				| blueviolet			| brown				| burlywood			|
+					cadetblue			| chartreuse			| chocolate			| coral				|
+					cornflowerblue		| cornsilk				| crimson			| cyan				|
+					darkblue			| darkcyan				| darkgoldenrod		| darkgray			|
+					darkgrey			| darkgreen				| darkkhaki			| darkmagenta		|
+					darkolivegreen		| darkorange			| darkorchid		| darkred			|
+					darksalmon			| darkseagreen			| darkslateblue		| darkslategray		|
+					darkslategrey		| darkturquoise			| darkviolet		| deeppink			|
+					deepskyblue			| dimgray				| dimgrey			| dodgerblue		|
+					firebrick			| floralwhite			| forestgreen		| fuchsia			|
+					gainsboro			| ghostwhite			| gold				| goldenrod			|
+					gray				| grey					| green				| greenyellow		|
+					honeydew			| hotpink				| indianred			| indigo			|
+					ivory				| khaki					| lavender			| lavenderblush		|
+					lawngreen			| lemonchiffon			| lightblue			| lightcoral		|
+					lightcyan			| lightgoldenrodyellow	| lightgray			| lightgrey			|
+					lightgreen			| lightpink				| lightsalmon		| lightseagreen		|
+					lightskyblue		| lightslategray		| lightslategrey	| lightsteelblue 	|
+					lightyellow			| lime					| limegreen			| linen				|
+					magenta				| maroon				| mediumaquamarine	| mediumblue		|
+					mediumorchid		| mediumpurple			| mediumseagreen	| mediumslateblue	|
+					mediumspringgreen	| mediumturquoise		| mediumvioletred	| midnightblue		|
+					mintcream			| mistyrose				| moccasin			| navajowhite		|
+					navy				| oldlace				| olive				| olivedrab			|
+					orange				| orangered				| orchid			| palegoldenrod		|
+					palegreen			| paleturquoise			| palevioletred		| papayawhip		|
+					peachpuff			| peru					| pink				| plum				|
+					powderblue			| purple				| red				| rosybrown			|
+					royalblue			| saddlebrown			| salmon			| sandybrown		|
+					seagreen			| seashell				| sienna			| silver			|
+					skyblue				| slateblue				| slategray			| slategrey			|
+					snow				| springgreen			| steelblue			| tan				|
+					teal				| thistle				| tomato			| turquoise			|
+					violet				| wheat					| white				| whitesmoke		|
+					yellow				| yellowgreen
+					
+	];
+	
+	hex-color = $#[0123456789ABCDEFabcdef]{6}$ | $#[0123456789ABCDEFabcdef]{3}$;
+	
+	rgb-color = rgb(@INT(0->255), @INT(0->255), @INT(0->255));
+	
+	prop-color = <named-color> | <hex-color> | <rgb-color> | inherit;
+	
+	percentage = @NUM ~ %;
+	
+	uri = @URL;
+	
+	string = @STRING;
+	
+	bool = true | false;
+	
+	color-fill = <prop-color> | [[linear|radial] gradient]? <prop-color> <prop-color>+ <percentage>+;
+	Widget {
+		
+	}
+	Control extends Widget {
+		background <color-fill>;
+		background-color <color-fill>;
+		background-image <uri>;
+		cursor [ default | auto | crosshair | pointer | move | e-resize | ne-resize | nw-resize | n-resize | 
+				 se-resize | sw-resize | s-resize | w-resize | text | wait | help ];
+		visibility [ hidden | visible ];
+		color <prop-color>;
+//font
+		font-family <string>;
+		font-size @NUM;
+		font-style italic;
+		font-weight bold;
+		margin-top @NUM;
+		margin-bottom @NUM;
+		margin-left @NUM;
+		margin-right @NUM;
+		margin @NUM | @NUM @NUM @NUM @NUM;
+	}
+	Button extends Control {
+		text-transform [capitalize | uppercase | lowercase | inherit ];
+		text-align [ left | center | right ];
+		swt-alignment [lead | trail | up | down ];
+	}
+	Label extends Control {
+		text-transform [capitalize | uppercase | lowercase | inherit ];
+		text-align [ left | center | right ];
+		swt-alignment [ lead | trail ];
+	}
+	Scrollable extends Control {
+		
+	}
+	Composite extends Scrollable  {
+		swt-background-mode [ default | force | none ];
+	}
+	CTabFolder extends Composite {
+		swt-corner-radius @NUM;
+		swt-tab-renderer @URL;
+		swt-unselected-tabs-color <color-fill>;
+		swt-tab-position [ bottom | top ];
+		swt-outer-keyline-color <prop-color>;
+		swt-inner-keyline-color <prop-color>;
+		swt-simple <bool>;
+		swt-maximize-visible <bool>;
+		swt-minimize-visible <bool>;
+		swt-mru-visible <bool>;
+		swt-maximized <bool>;
+		swt-minimized <bool>;
+		swt-tab-height @NUM;
+		swt-single <bool>;
+		swt-unselected-close-visible <bool>;
+		swt-unselected-image-visible <bool>;
+		swt-selected-tabs-background <color-fill>;
+		swt-shadow-visible <bool>;
+		swt-selected-tab-fill <color-fill>;
+		swt-tab-outline <prop-color>;
+		swt-shadow-color <prop-color>;
+		padding @NUM | @NUM @NUM @NUM @NUM;
+		padding-left @NUM;
+		padding-right @NUM;
+		padding-top @NUM;
+		padding-bottom @NUM;
+	}
+	Item extends Widget {
+		
+	}
+	CTabItem extends Item {
+		color <prop-color>
+		text-transform [capitalize | uppercase | lowercase | inherit ];
+		background <color-fill>;
+		background-color <color-fill>;
+		background-image @URL
+		//font
+		font-family <string>;
+		font-size @NUM;
+		font-style italic;
+		font-weight bold;
+		swt-show-close <bool>;
+	}
+}
